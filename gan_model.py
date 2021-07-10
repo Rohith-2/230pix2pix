@@ -2,6 +2,7 @@ import torch
 from model_modules import *
 import numpy as np
 import scipy.misc
+import imageio
 import os
 import itertools
 from torch.nn import init
@@ -231,11 +232,11 @@ class GANModel:
         if test:
             img = self.tensor2image(gen)
             path = os.path.join(filepath, '%s.png' % fname)
-            scipy.misc.imsave(path, img.squeeze().transpose(1,2,0))
+            imageio.imwrite(path, img.squeeze().transpose(1,2,0))
         else:
             merged = self.tensor2image(self.merge_images(A, B, gen))
             path = os.path.join(filepath, '%s.png' % fname)
-            scipy.misc.imsave(path, merged)
+            imageio.imwrite(path, merged)
 
         print('saved %s' % path)
 
