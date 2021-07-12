@@ -96,7 +96,11 @@ if __name__ == "__main__":
     if args.mode == "test":
         out_dir = os.path.dirname(args.pretrain_path)
         out_dir_img = os.path.join(out_dir, "images", "test")
-        #os.mkdir(out_dir_img)
+        
+        try:
+            os.mkdir(out_dir_img)
+        except:
+            continue
 
         # load data
         test_loader = dataloader.get_dataloader(os.path.join(args.data_dir, "testA"),
