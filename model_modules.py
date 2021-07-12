@@ -79,12 +79,20 @@ class Generator(nn.Module):
         self.encoder2 = EncoderBlock(64, 128, bias=bias, norm=norm)
         self.encoder3 = EncoderBlock(128, 256, bias=bias, norm=norm)
         self.encoder4 = EncoderBlock(256, 512, bias=bias, norm=norm)
+        '''
         self.encoder5 = EncoderBlock(512, 512, bias=bias, norm=norm)
         self.encoder6 = EncoderBlock(512, 512, bias=bias, norm=norm)
         self.encoder7 = EncoderBlock(512, 512, bias=bias, norm=norm)
         self.encoder8 = EncoderBlock(512, 512, bias=bias, do_norm=False)
+        '''
+        self.encoder5 = EncoderBlock(512, 768, bias=bias, norm=norm)
+        self.encoder6 = EncoderBlock(768, 1024, bias=bias, norm=norm)
+        self.encoder7 = EncoderBlock(1024, 1536, bias=bias, norm=norm)
+        self.encoder8 = EncoderBlock(1536, 1536, bias=bias, do_norm=False)
+        
 
         # 8-step UNet decoder
+        '''
         self.decoder1 = DecoderBlock(512, 512, bias=bias, norm=norm)
         self.decoder2 = DecoderBlock(1024, 512, bias=bias, norm=norm, dropout_prob=dropout_prob)
         self.decoder3 = DecoderBlock(1024, 512, bias=bias, norm=norm, dropout_prob=dropout_prob)
@@ -93,6 +101,15 @@ class Generator(nn.Module):
         self.decoder6 = DecoderBlock(512, 128, bias=bias, norm=norm)
         self.decoder7 = DecoderBlock(256, 64, bias=bias, norm=norm)
         self.decoder8 = DecoderBlock(128, out_channels, bias=bias, do_norm=False)
+        '''
+        self.decoder1 = DecoderBlock(1536, 1536, bias=bias, norm=norm)
+        self.decoder2 = DecoderBlock(1536, 1024, bias=bias, norm=norm, dropout_prob=dropout_prob)
+        self.decoder3 = DecoderBlock(1024, 768, bias=bias, norm=norm, dropout_prob=dropout_prob)
+        self.decoder4 = DecoderBlock(1024, 768, bias=bias, norm=norm, dropout_prob=dropout_prob)
+        self.decoder5 = DecoderBlock(1024, 512, bias=bias, norm=norm)
+        self.decoder6 = DecoderBlock(768, 256, bias=bias, norm=norm)
+        self.decoder7 = DecoderBlock(512, 64, bias=bias, norm=norm)
+        self.decoder8 = DecoderBlock(384, out_channels, bias=bias, do_norm=False)
 
     def forward(self, x):
         # 8-step encoder
