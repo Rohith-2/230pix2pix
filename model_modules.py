@@ -102,7 +102,7 @@ class Generator(nn.Module):
         self.decoder7 = DecoderBlock(256, 64, bias=bias, norm=norm)
         self.decoder8 = DecoderBlock(128, out_channels, bias=bias, do_norm=False)
         '''
-        self.decoder1 = DecoderBlock(1536, 1536, bias=bias, norm=norm)
+        self.decoder1 = DecoderBlock(1536, 768, bias=bias, norm=norm)
         self.decoder2 = DecoderBlock(3072, 1536, bias=bias, norm=norm, dropout_prob=dropout_prob)
         self.decoder3 = DecoderBlock(3072, 1536, bias=bias, norm=norm, dropout_prob=dropout_prob)
         self.decoder4 = DecoderBlock(3072, 1536, bias=bias, norm=norm, dropout_prob=dropout_prob)
