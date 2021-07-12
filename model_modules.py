@@ -103,12 +103,12 @@ class Generator(nn.Module):
         self.decoder8 = DecoderBlock(128, out_channels, bias=bias, do_norm=False)
         '''
         self.decoder1 = DecoderBlock(1536, 1536, bias=bias, norm=norm)
-        self.decoder2 = DecoderBlock(1536, 1024, bias=bias, norm=norm, dropout_prob=dropout_prob)
-        self.decoder3 = DecoderBlock(1024, 768, bias=bias, norm=norm, dropout_prob=dropout_prob)
-        self.decoder4 = DecoderBlock(1024, 768, bias=bias, norm=norm, dropout_prob=dropout_prob)
-        self.decoder5 = DecoderBlock(1024, 512, bias=bias, norm=norm)
-        self.decoder6 = DecoderBlock(768, 256, bias=bias, norm=norm)
-        self.decoder7 = DecoderBlock(512, 64, bias=bias, norm=norm)
+        self.decoder2 = DecoderBlock(3072, 1536, bias=bias, norm=norm, dropout_prob=dropout_prob)
+        self.decoder3 = DecoderBlock(3072, 1536, bias=bias, norm=norm, dropout_prob=dropout_prob)
+        self.decoder4 = DecoderBlock(3072, 1536, bias=bias, norm=norm, dropout_prob=dropout_prob)
+        self.decoder5 = DecoderBlock(3072, 768, bias=bias, norm=norm)
+        self.decoder6 = DecoderBlock(768, 384, bias=bias, norm=norm)
+        self.decoder7 = DecoderBlock(768, 64, bias=bias, norm=norm)
         self.decoder8 = DecoderBlock(384, out_channels, bias=bias, do_norm=False)
 
     def forward(self, x):
