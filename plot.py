@@ -83,9 +83,10 @@ for folder in args.dir:
 
                 # calculate average loss in each epoch
                 if set == "train_loss":
-                    ave_loss = np.mean([ stats[set][loss][i:i + 1096] for i in range(0, len(stats[set][loss]), 1096) ], axis=1).tolist()
+                #print([ np.mean(stats[set][loss][i:i + 1096]) for i in range(0, len(stats[set][loss]), 1096) ])
+                    ave_loss = [ np.mean(stats[set][loss][i:i + 1096]) for i in range(0, len(stats[set][loss]), 1096) ]
                 if set == "val_loss":
-                    ave_loss = np.mean([ stats[set][loss][i:i + 100] for i in range(0, len(stats[set][loss]), 100) ], axis=1).tolist()
+                    ave_loss = [ np.mean(stats[set][loss][i:i + 100]) for i in range(0, len(stats[set][loss]), 100) ]
                 ave_stats[set][loss] += ave_loss
 
 
