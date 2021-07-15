@@ -7,7 +7,7 @@ from torchvision import models
 #############################################################
 
 class EncoderBlock(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size=4, stride=2, padding=1, dilation=1, groups=1, bias=False,
+    def __init__(self, in_channels, out_channels, kernel_size=2, stride=1, padding=1, dilation=1, groups=1, bias=False,
                  do_norm=True, norm = 'batch', do_activation = True): # bias default is True in Conv2d
         super(EncoderBlock, self).__init__()
         self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=kernel_size, stride=stride, padding=padding, dilation=dilation, groups=groups, bias=bias)
@@ -36,7 +36,7 @@ class EncoderBlock(nn.Module):
         return x
 
 class DecoderBlock(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size=4, stride=2, padding=1, bias=False,
+    def __init__(self, in_channels, out_channels, kernel_size=2, stride=1, padding=1, bias=False,
                  do_norm=True, norm = 'batch',do_activation = True, dropout_prob=0.0):
         super(DecoderBlock, self).__init__()
 
@@ -79,7 +79,7 @@ class Generator(nn.Module):
         self.encoder2 = EncoderBlock(64, 128, bias=bias, norm=norm)
         self.encoder3 = EncoderBlock(128, 256, bias=bias, norm=norm)
         self.encoder4 = EncoderBlock(256, 512, bias=bias, norm=norm)
-        '''
+       
         self.encoder5 = EncoderBlock(512, 512, bias=bias, norm=norm)
         self.encoder6 = EncoderBlock(512, 512, bias=bias, norm=norm)
         self.encoder7 = EncoderBlock(512, 512, bias=bias, norm=norm)
@@ -89,10 +89,10 @@ class Generator(nn.Module):
         self.encoder6 = EncoderBlock(768, 1024, bias=bias, norm=norm)
         self.encoder7 = EncoderBlock(1024, 1536, bias=bias, norm=norm)
         self.encoder8 = EncoderBlock(1536, 1536, bias=bias, do_norm=False)
-        
+        '''
 
         # 8-step UNet decoder
-        '''
+        
         self.decoder1 = DecoderBlock(512, 512, bias=bias, norm=norm)
         self.decoder2 = DecoderBlock(1024, 512, bias=bias, norm=norm, dropout_prob=dropout_prob)
         self.decoder3 = DecoderBlock(1024, 512, bias=bias, norm=norm, dropout_prob=dropout_prob)
@@ -109,7 +109,7 @@ class Generator(nn.Module):
         self.decoder5 = DecoderBlock(2048, 768, bias=bias, norm=norm)
         self.decoder6 = DecoderBlock(1024, 384, bias=bias, norm=norm)
         self.decoder7 = DecoderBlock(512, 192, bias=bias, norm=norm)
-        self.decoder8 = DecoderBlock(256, out_channels, bias=bias, do_norm=False)
+        self.decoder8 = DecoderBlock(256, out_channels, bias=bias, do_norm=False) '''
 
     def forward(self, x):
         # 8-step encoder
