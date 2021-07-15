@@ -36,7 +36,7 @@ class EncoderBlock(nn.Module):
         return x
 
 class DecoderBlock(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size=5, stride=2, padding=0, bias=False,
+    def __init__(self, in_channels, out_channels, kernel_size=5, stride=2, padding=1, bias=False,
                  do_norm=True, norm = 'batch',do_activation = True, dropout_prob=0.0):
         super(DecoderBlock, self).__init__()
 
