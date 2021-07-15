@@ -7,7 +7,7 @@ from torchvision import models
 #############################################################
 
 class EncoderBlock(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size=2, stride=1, padding=1, dilation=1, groups=1, bias=False,
+    def __init__(self, in_channels, out_channels, kernel_size=4, stride=2, padding=1, dilation=1, groups=1, bias=False,
                  do_norm=True, norm = 'batch', do_activation = True): # bias default is True in Conv2d
         super(EncoderBlock, self).__init__()
         self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=kernel_size, stride=stride, padding=padding, dilation=dilation, groups=groups, bias=bias)
@@ -36,7 +36,7 @@ class EncoderBlock(nn.Module):
         return x
 
 class DecoderBlock(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size=2, stride=1, padding=1, bias=False,
+    def __init__(self, in_channels, out_channels, kernel_size=4, stride=2, padding=1, bias=False,
                  do_norm=True, norm = 'batch',do_activation = True, dropout_prob=0.0):
         super(DecoderBlock, self).__init__()
 
