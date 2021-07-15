@@ -79,7 +79,7 @@ class Generator(nn.Module):
         self.encoder2 = EncoderBlock(64, 128, bias=bias, norm=norm)
         self.encoder3 = EncoderBlock(128, 256, bias=bias, norm=norm)
         self.encoder4 = EncoderBlock(256, 512, bias=bias, norm=norm)
-        '''
+       
         self.encoder5 = EncoderBlock(512, 512, bias=bias, norm=norm)
         self.encoder6 = EncoderBlock(512, 512, bias=bias, norm=norm)
         self.encoder7 = EncoderBlock(512, 512, bias=bias, norm=norm)
@@ -89,10 +89,10 @@ class Generator(nn.Module):
         self.encoder6 = EncoderBlock(768, 1024, bias=bias, norm=norm)
         self.encoder7 = EncoderBlock(1024, 1536, bias=bias, norm=norm)
         self.encoder8 = EncoderBlock(1536, 1536, bias=bias, do_norm=False)
-        
+        '''
 
         # 8-step UNet decoder
-        '''
+        
         self.decoder1 = DecoderBlock(512, 512, bias=bias, norm=norm)
         self.decoder2 = DecoderBlock(1024, 512, bias=bias, norm=norm, dropout_prob=dropout_prob)
         self.decoder3 = DecoderBlock(1024, 512, bias=bias, norm=norm, dropout_prob=dropout_prob)
@@ -109,7 +109,7 @@ class Generator(nn.Module):
         self.decoder5 = DecoderBlock(2048, 768, bias=bias, norm=norm)
         self.decoder6 = DecoderBlock(1024, 384, bias=bias, norm=norm)
         self.decoder7 = DecoderBlock(512, 192, bias=bias, norm=norm)
-        self.decoder8 = DecoderBlock(256, out_channels, bias=bias, do_norm=False)
+        self.decoder8 = DecoderBlock(256, out_channels, bias=bias, do_norm=False) '''
 
     def forward(self, x):
         # 8-step encoder
