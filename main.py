@@ -272,7 +272,6 @@ if __name__ == "__main__":
             if i >= args.save_n_img:
                 break
             # model.test(images, i, out_dir_img)
-            print(images)
             score_gen, score_gt = model.test(images, i, out_dir_img)
             score_gen = round(float(score_gen), 6)
             score_gt = round(float(score_gt), 6)
